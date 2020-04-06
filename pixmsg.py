@@ -17,9 +17,7 @@ def get_msg(img, start=(0,0)):
                 return msg
             msg += chr(c[1])
     return msg
-ascii_table = {chr(c) : c for c in range(1,256)}
-def asc(c):
-    return ascii_table[c]
+
 def insert_msg(img, msg, start=(0,0)):
     count = 0
     for x in range(start[0], img.size[0]):
@@ -28,7 +26,7 @@ def insert_msg(img, msg, start=(0,0)):
             if count == len(msg):
                 img.putpixel((x, y), (255, 0, 0, 0))
                 return
-            c = asc(msg[count])
+            c = ord(msg[count])
             img.putpixel((x, y), (255, c, c, c))
             count +=1
     img.putpixel((x, y), (255, 0, 0, 0))
